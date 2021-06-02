@@ -10,6 +10,9 @@ app.use(express.json())
 const {MongoClient} = require('mongodb');
 const crypto = require("crypto");
 const redis = require("redis");
+var cors = require('cors')
+
+app.use(cors());
 
 // get all todos
 app.post('/user/login', (req, res) => {
