@@ -25,7 +25,7 @@ app.post('/user/login', (req, res) => {
     else{
         getRegister(req.body.mail).catch(console.error).then(data => {
             if (data === null) {
-                res.status(501).send({
+                res.status(206).send({
                     message: 'User not found.',
                 })      
             }
@@ -93,7 +93,7 @@ app.post('/user/signin', (req, res) => {
              Object.keys(req.body).includes("lastName") & 
              Object.keys(req.body).includes("mail") &
              Object.keys(req.body).includes("password"))) {
-        res.status(501).send({
+        res.status(200).send({
             message: 'You are missing some field.',
         })    
     }
