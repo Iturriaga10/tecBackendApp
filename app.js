@@ -1,4 +1,5 @@
 import express from 'express';
+import getRegister from './MongoDBController';
 //import db from './db/db';
 
 // Set up the express app
@@ -76,9 +77,6 @@ app.post('/user/session', (req, res) => {
     }
 });
 
- 
-
-
 app.delete('/user/:_id', (req, res) => {
 
     deleteRegister(req.params._id).catch(console.error);
@@ -153,22 +151,5 @@ async function deleteRegister(newValue){
     }
 }
 
-async function getRegister(newValue){   
-    const client = new MongoClient(URI);
-    var result ;
 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
- 
-        // Make the appropriate DB calls
-        result = await client.db("PersonalInformation").collection("Users").findOne({'mail':newValue});
-         
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-    return result;
-}
  
